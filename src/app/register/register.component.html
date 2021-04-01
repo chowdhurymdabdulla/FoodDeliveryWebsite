@@ -1,0 +1,67 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                
+                <div class="card-header">Register</div>
+
+                <div class="card-body">
+                    
+                         <form #rf="ngForm">
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  #name="ngModel"  ngModel required  autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required #email="ngModel"  ngModel>
+
+                            </div>
+                        </div>
+                        <div ngModelGroup="password">
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="paw" required #paw="ngModel"  ngModel>
+
+                                
+                                </div>
+                                <!-- <div>
+                                    <span>Password is required</span>
+                                </div> -->
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" name="cpaw" required #cpaw="ngModel"  ngModel appPassMatch="password.paw">
+                                </div>
+                                
+                            </div>
+                            <div *ngIf = "cpaw.errors?.missmatch" class="col-md-6"  >
+                                <span style="color: red;">* Password Missmatch </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary" (click)= "onRfSubmilt(rf.value)"> 
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
